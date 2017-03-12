@@ -1,0 +1,35 @@
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+[user]
+	name = bo-zhou
+	email = zhou@enish.jp
+[merge]
+	tool = vimdiff
+	ff = false
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+# ちょっと理解してないもの
+	svn-diff = "!f() { git svn dcommit -n | grep diff | awk -F'diff-tree' -v opt=$@ '{print \"git diff \"opt\" \"$2}' | sh; }; f"
+	kfetch = fetch --all --prune
+	kup = !git fetch --all --prune && git checkout master && git merge --ff upstream/master && git push origin master
+	# local masterに切替して、更新する
+	lup = !git fetch --all --prune && git checkout master && git merge --ff origin/master
+	dkup = !git fetch --all --prune && git checkout develop && git merge --ff upstream/develop && git push origin develop
+	devup = !git fetch --all --prune && git checkout development && git merge --ff upstream/development && git push origin development
+	kuptsutaya = !git fetch --all --prune && git checkout try-tsutaya && git merge --ff upstream/try-tsutaya && git push origin try-tsutaya
+	delete-merged-branch = !git br --merged | grep -v \\* | xargs -I % git br -d %
+	gitsync = git fetch --prune origin ‘refs/heads/*:refs/heads/*’ && git push enterprise —mirror
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
