@@ -2,7 +2,7 @@ if &compatible
     set nocompatible
 endif
 " deinパス設定
-let s:dein_dir = fnamemodify('~/.config/dein/', ':p') "<-お好きな場所
+let s:dein_dir = fnamemodify('~/.config/nvim-dein/', ':p') "<-お好きな場所
 let s:dein_repo_dir = s:dein_dir . 'repos/github.com/Shougo/dein.vim' "<-固定
 
 " dein.vim本体の存在チェックとインストール
@@ -28,9 +28,6 @@ call dein#add('zchee/deoplete-go', {'build': 'make'})
 call dein#add('itchyny/lightline.vim')
 call dein#add('scrooloose/nerdtree')
 call dein#add('Shougo/context_filetype.vim')
-call dein#add('Shougo/neosnippet')
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/unite-outline')
@@ -47,7 +44,7 @@ call dein#add('tomasr/molokai')
 call dein#add('Shougo/vimshell.vim')
 " call dein#add('jiangmiao/auto-pairs')
 call dein#add('fatih/vim-go')
-" call dein#add('SirVer/ultisnips')
+call dein#add('SirVer/ultisnips')
 call dein#add('tomtom/tcomment_vim')
 " call dein#add('pbogut/deoplete-padawan')
 call dein#add('tpope/vim-fugitive')
@@ -80,7 +77,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const' ]
 let g:deoplete#sources#go#package_dot = 1
-let g:deoplete#sources#go#use_cache = 1
+"let g:deoplete#sources#go#use_cache = 1
 let g:deoplete#sources#go#json_directory = '~/.cache/deoplete/go/'.$GOOS.'_'.$GOARCH
 
 " molokai
@@ -101,16 +98,19 @@ let g:go_highlight_operators = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_generate_tags = 1
 let g:go_highlight_build_constraints = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave = 1
 
 " Syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_go_checkers = ['golint', 'gotype', 'govet', 'go']
+let g:syntastic_check_on_wq = 1 
 "
 "LightLine
 "
@@ -173,4 +173,4 @@ let g:deoplete#sources#swift#daemon_autostart = 1
 " Enable filetype plugins
 filetype plugin on
 
-"autocmd VimEnter * execute 'NERDTree'
+autocmd VimEnter * execute 'NERDTree'

@@ -12,9 +12,16 @@ install.sh
 vi
 ```
 
-
-
 ### install linux
 git clone https://github.com/ztp1977/dotfile.git
 cd dotfile/linux
 install.sh
+
+### troubleshot
+1. neovim plugin upgrade
+
+```bash
+rm -rf .config/nvim-dein
+vim
+```
+

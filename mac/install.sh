@@ -19,6 +19,10 @@ mkdir -p ~/.vim
 ln -s ~/.vim ~/.config/nvim
 ln -s ~/.vimrc ~/.config/nvim/init.vim
 
+# tool
+brew install mitmproxy
+
+
 # reload
 source ~/.zshrc
 

@@ -20,3 +20,10 @@ brew cask install --force coteditor
 brew cask install --force karabiner
 brew cask install --force chatwork
 brew cask install --force github-desktop
+brew cask install --force screenflow
+brew cask install --force shupapan
+brew cask install --force fastlane
+brew cask install --force powershell
+brew cask install --force franz
+brew cask install --force sketch
+
